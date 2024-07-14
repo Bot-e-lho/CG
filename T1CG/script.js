@@ -350,7 +350,7 @@ const groundTexture = createGroundTexture(gl, {
   //const branch = material.branch;
   const tree_4 = material.tree_4;
 
-  var eye = [0, 100, 450]; // exemplo para mostrar o efeito da iluminação: [0, 300, 300];
+  var eye = [0, 50, 450]; // exemplo para mostrar o efeito da iluminação: [0, 300, 300];
   var target = [0, -0.3, -1]; // perspectiva horizontal - [0, 0, 1]; efeito da iluminação na camera
   const fovRad = degToRad(90);
 
@@ -575,7 +575,7 @@ function genForest(seed, forest_size, obj_Scale) {
   const scene = [];
   //const perlin = new Noise(seed);
   /** 
-   * const gridSize = 5;
+   * const gridSize =;
    * for (let x = -forest_size / 2; x < forest_size / 2; x += gridSize) {
         for (let z = -forest_size / 2; z < forest_size / 2; z += gridSize) {
             const noiseValue = perlin.noise(x / 100, z / 100);
