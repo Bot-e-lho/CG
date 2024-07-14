@@ -12,7 +12,7 @@ async function main() {
     return;
   }
   
-  resizeCanvasToDisplaySize(canvas);
+  resizeCanvasToDisplaySize(gl.canvas);
 
   // Tell the twgl to match position with a_position etc..
   twgl.setAttributePrefix("a_");
@@ -163,17 +163,17 @@ async function main() {
   const tree_4Materials = parseMTL(tree_4models.mtlText);
 
   const textures = {
-    defaultWhite: twgl.createTexture(gl, {src: [255, 255, 255, 255]}),
-    defaultNormal: twgl.createTexture(gl, {src: [127, 127, 255, 0]}),
-    defaultGreen: twgl.createTexture(gl, {src: [3, 46, 15, 255]}),
-    grass: twgl.createTexture(gl, {src: grassmodels.png}),
-    tree: twgl.createTexture(gl, {src: treemodels.png}),
-    tree_2: twgl.createTexture(gl, {src: tree_2models.png}),
-    tree_3: twgl.createTexture(gl, {src: tree_3models.png}),
-    rock: twgl.createTexture(gl, {src: rockmodels.png}),
-    //shrub: twgl.createTexture(gl, {src: shrubmodels.png}),
-    //branch: twgl.createTexture(gl, {src: branchmodels.png}),
-    tree_4: twgl.createTexture(gl, {src: tree_4models.png})
+    defaultWhite: await twgl.createTexture(gl, {src: [255, 255, 255, 255]}),
+    defaultNormal: await twgl.createTexture(gl, {src: [127, 127, 255, 0]}),
+    defaultGreen: await twgl.createTexture(gl, {src: [3, 46, 15, 255]}),
+    grass: await twgl.createTexture(gl, {src: grassmodels.png}),
+    tree: await twgl.createTexture(gl, {src: treemodels.png}),
+    tree_2: await twgl.createTexture(gl, {src: tree_2models.png}),
+    tree_3: await twgl.createTexture(gl, {src: tree_3models.png}),
+    rock: await twgl.createTexture(gl, {src: rockmodels.png}),
+    //shrub: await twgl.createTexture(gl, {src: shrubmodels.png}),
+    //branch: await twgl.createTexture(gl, {src: branchmodels.png}),
+    tree_4: await twgl.createTexture(gl, {src: tree_4models.png})
   };
 
 
@@ -383,6 +383,7 @@ const groundTexture = createGroundTexture(gl, {
 
   // Draw the scene.
   function drawScene() {
+    resizeCanvasToDisplaySize(gl.canvas);
     const now = performance.now();
     const deltaTime = (now - then) * 0.001; // Convertendo para segundos
     then = now;
@@ -393,8 +394,6 @@ const groundTexture = createGroundTexture(gl, {
     gl.cullFace(gl.BACK);
     gl.depthFunc(gl.LESS); 
     gl.frontFace(gl.CCW);
-
-
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.clearColor(174/255, 198/255, 207/255, 1);
     
@@ -440,6 +439,8 @@ const groundTexture = createGroundTexture(gl, {
   
     twgl.setUniforms(meshProgramInfo, {
       u_world: u_world,
+      u_worldInverseTranspose: m4.transpose(m4.inverse(u_world)),
+      u_worldViewProjection: m4.multiply(viewMatrix, u_world),
     }, groundTexture);
     
     twgl.drawBufferInfo(gl, groundObj.bufferInfo);
@@ -520,7 +521,7 @@ function getSliderValue(id) {
   const slider = document.getElementById(id);
   return parseInt(slider.value, 10);
 }
-// Mecanismos da camera
+// Mecanismos de movimento da camera
 let up = [0, 1, 0];
 let keysPressed = {};
 const SPEED = 25;
