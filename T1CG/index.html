@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Procedural Genaration</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="perlin.js"></script>
+</head>
+<body>
+    <div id="canvasContainer">
+        <canvas id="canvas"></canvas>
+        <div id="inputContainer">
+            <div id="slidersContainer"></div>
+            <input type="text" id="input" placeholder="Seed">
+            <div id="buttonContainer">
+                <button id="genRandom" onclick="genSeed()">Gerar Novo Mundo</button>
+            </div>
+        </div>
+    </div>
+    <script> src="perlin.js"</script>
+    <script src="https://webgl2fundamentals.org/webgl/resources/m4.js"></script>
+    <script src="https://webgl2fundamentals.org/webgl/resources/m3.js"></script>    
+    <script src="https://twgljs.org/dist/4.x/twgl.min.js"></script>
+    <script src="script.js"></script>
+    <div id="uiContainer">
+        <div id="ui">
+        </div>
+    </div>
+
+    <script>
+        const sliders = [
+            { id: 'grassSlider', label: 'Grass Density', min: 10, max: 100, oninput: 'updateGrass()' },
+            { id: 'objSlider', label: 'Object Count', min: 1, max: 500, oninput: 'updateDensity()' },
+            { id: 'forestSlider', label: 'Forest Size', min: 10, max: 1500, oninput: 'updateSize()' }
+        ];
+
+        function createSlider(slider) {
+            const container = document.createElement('div');
+            container.className = 'sliderContainer';
+            
+            const label = document.createElement('span');
+            label.className = 'sliderLabel';
+            label.textContent = slider.label;
+            container.appendChild(label);
+            
+            const input = document.createElement('input');
+            input.type = 'range';
+            input.id = slider.id;
+            input.className = 'slider';
+            input.min = slider.min;
+            input.max = slider.max;
+            input.value = slider.value;
+            input.oninput = function() { 
+                eval(slider.oninput);
+                document.getElementById(slider.id + 'Value').textContent = input.value;
+            };
+            container.appendChild(input);
+            
+            const value = document.createElement('span');
+            value.className = 'sliderValue';
+            value.id = slider.id + 'Value';
+            value.textContent = slider.value;
+            container.appendChild(value);
+            
+            return container;
+        }
+
+        function generateSliders() {
+            const slidersContainer = document.getElementById('slidersContainer');
+            sliders.forEach(slider => {
+                const sliderElement = createSlider(slider);
+                slidersContainer.appendChild(sliderElement);
+            });
+        }
+
+        generateSliders();
+
+        function genSeed() {
+            const seed = Math.floor(Math.random() * 1000000);
+            document.getElementById('input').value = seed;
+        }
+    </script>
+</body>
+</html>
