@@ -1,5 +1,5 @@
 # Procedural Generation Project
-### Este projeto é um sistema de geração procedural de cenários utilizando WebGL e JavaScript. Ele permite a criação dinâmica de diferentes ambientes, como florestas, cidades ou castelos, com configurações ajustáveis através de controles de interface.
+### Este projeto é um sistema de geração procedural de cenários utilizando WebGL e JavaScript. Ele permite a criação dinâmica de diferentes ambientes, como florestas, cidades ou castelos, com configurações ajustáveis através de controles de interface. Este ambiente foca na geração procedural de uma floresta.
 
 ## Funcionalidades Implementadas
 #### Objetos Implementados:
