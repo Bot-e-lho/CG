@@ -33,5 +33,4 @@
 
 #### Uso:
 ###### Ajuste os sliders para configurar a densidade de grama, número de objetos e tamanho da floresta.
-###### Insira uma semente no campo de texto para gerar cenários específicos.
 ###### Clique no botão "Gerar Novo Mundo" para visualizar um novo cenário com as configurações definidas.
