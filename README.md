@@ -19,14 +19,14 @@
 ###### Botão que ao ser pressionado gera um novo cenário com base nas configurações atuais.
 
 #### Problemas Conhecidos:
-###### Otimização de Tela:
+##### Otimização de Tela:
 
-###### A otimização para diferentes tamanhos de tela não está completamente funcional.
-#### Renderização de Texturas:
+##### A otimização para diferentes tamanhos de tela não está completamente funcional.
+##### Renderização de Texturas:
 
-###### As texturas não estão sendo renderizadas conforme o esperado.
-#### Implementação do Perlin Noise:
-###### A implementação do Perlin Noise não foi concluída.
+##### As texturas não estão sendo renderizadas conforme o esperado.
+##### Implementação do Perlin Noise:
+##### A implementação do Perlin Noise não foi concluída.
 
 #### Pré-requisitos:
 ###### Navegador com suporte a WebGL.
