@@ -29,7 +29,7 @@
 ###### A implementação do Perlin Noise não foi concluída.
 
 #### Pré-requisitos:
-##### Navegador com suporte a WebGL.
+###### Navegador com suporte a WebGL.
 
 #### Uso:
 ###### Ajuste os sliders para configurar a densidade de grama, número de objetos e tamanho da floresta.
