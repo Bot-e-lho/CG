@@ -18,7 +18,7 @@
 #### Botão de Geração:
 ###### Botão que ao ser pressionado gera um novo cenário com base nas configurações atuais.
 
-#### Problemas Conhecidos:
+#### Problemas:
 ##### Otimização de Tela:
 
 ##### A otimização para diferentes tamanhos de tela não está completamente funcional.
