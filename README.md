@@ -3,23 +3,22 @@
 
 ## Funcionalidades Implementadas
 #### Objetos Implementados:
-
-##### Grama
-##### Quatro tipos diferentes de árvores
-##### Pedra
+###### Grama
+###### Quatro tipos diferentes de árvores
+###### Pedra
 #### Regras e Especificações:
 
-##### Grama e Pedra: Restrição de colocação no chão.
-##### Árvores: Restrição de colocação no chão e distância mínima entre outras árvores.
+###### Grama e Pedra: Restrição de colocação no chão.
+###### Árvores: Restrição de colocação no chão e distância mínima entre outras árvores.
 #### Controles de Interface:
 
-##### Sliders para ajuste de densidade de grama, número de objetos e tamanho da floresta.
-##### Campo para inserção de semente para geração aleatória de cenários.
+###### Sliders para ajuste de densidade de grama, número de objetos e tamanho da floresta.
+###### Campo para inserção de semente para geração aleatória de cenários.
 #### Botão de Geração:
 
-##### Botão que ao ser pressionado gera um novo cenário com base nas configurações atuais.
+###### Botão que ao ser pressionado gera um novo cenário com base nas configurações atuais.
 #### Problemas Conhecidos
-##### Otimização de Tela:
+###### Otimização de Tela:
 
 ###### A otimização para diferentes tamanhos de tela não está completamente funcional.
 ##### Renderização de Texturas:
