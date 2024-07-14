@@ -350,7 +350,7 @@ const groundTexture = createGroundTexture(gl, {
   //const branch = material.branch;
   const tree_4 = material.tree_4;
 
-  var eye = [0, 200, 450]; // exemplo para mostrar o efeito da iluminação: [0, 300, 300];
+  var eye = [0, 100, 450]; // exemplo para mostrar o efeito da iluminação: [0, 300, 300];
   var target = [0, -0.3, -1]; // perspectiva horizontal - [0, 0, 1]; efeito da iluminação na camera
   const fovRad = degToRad(90);
 
@@ -633,9 +633,9 @@ function genObjects(scene, forest_size, obj_Scale, random) {
       if ([1, 2, 3].includes(type)) { // if([1, 2, 3, 4]).includes(type)
         scale = getRandomScale(5, 10, random);
       } else if ([4].includes(type)) {
-        scale = getRandomScale(2, 4, random);
+        scale = getRandomScale(2, 6, random);
       } else {
-        scale = getRandomScale(0.5, 2, random);
+        scale = getRandomScale(0.5, 1, random);
       }
       rotation = getRandomRotation(random);
       if ([1, 2, 3].includes(type) && !isValidPosition(position[0], position[2], scene)) {//if([1, 2, 3, 4]).includes(type)
