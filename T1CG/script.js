@@ -293,24 +293,6 @@ const groundTexture = createGroundTexture(gl, {
       } else {
         data.color = {value: [1, 1, 1, 1]};
       }
-      /*// generate tangents if we have the data to do so.
-      if (data.texcoord && data.normal) {
-        data.tangent = generateTangents(data.position, data.texcoord);
-      } else {
-        // There are no tangents
-        data.tangent = { value: [1, 0, 0] };
-      }
-
-      if (!data.texcoord) {
-        data.texcoord = { value: [0, 0] };
-      }
-
-      if (!data.normal) {
-        // we probably want to generate normals if there are none
-        data.normal = { value: [0, 0, 1] };
-      }*/
-      // create a buffer for each array by calling
-      // gl.createBuffer, gl.bindBuffer, gl.bufferData
       const bufferInfo = twgl.createBufferInfoFromArrays(gl, data);
       const vao = twgl.createVAOFromBufferInfo(gl, programInfo, bufferInfo);
   
@@ -351,7 +333,7 @@ const groundTexture = createGroundTexture(gl, {
   const tree_4 = material.tree_4;
 
   var eye = [0, 50, 450]; // exemplo para mostrar o efeito da iluminação: [0, 300, 300];
-  var target = [0, -0.3, -1]; // perspectiva horizontal - [0, 0, 1]; efeito da iluminação na camera
+  var target = [0, -0.3, -1];
   const fovRad = degToRad(90);
 
   document.getElementById('genRandom').addEventListener('click', function() {
@@ -639,7 +621,7 @@ function genObjects(scene, forest_size, obj_Scale, random) {
         scale = getRandomScale(0.5, 1, random);
       }
       rotation = getRandomRotation(random);
-      if ([1, 2, 3].includes(type) && !isValidPosition(position[0], position[2], scene)) {//if([1, 2, 3, 4]).includes(type)
+      if ([1, 2, 3, 4].includes(type) && !isValidPosition(position[0], position[2], scene)) {//if([1, 2, 3, 4]).includes(type)
         type = -1;
       }
 
