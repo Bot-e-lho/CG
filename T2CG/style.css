@@ -1,0 +1,34 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Background color to contrast the WebGL canvas */
+}
+
+#canvas {
+    width: 80%;
+    height: 80%;
+    border: 1px solid #ccc; /* Optional border for better visibility */
+}
+
+#ui {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Optional shadow for better visibility */
+}
+
+.ui-slider, .ui-checkbox {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.ui-slider input, .ui-checkbox input {
+    margin-left: 10px;
+}
