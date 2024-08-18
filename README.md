@@ -1,6 +1,7 @@
 # Computação Gráfica
 ### Neste repositório estão presentes 2 trabalhos da disciplina de computação gráfica. 
 (T1) - Este projeto é um sistema de geração procedural de cenários utilizando WebGL e JavaScript. Ele permite a criação dinâmica de diferentes ambientes, como florestas, cidades ou castelos, com configurações ajustáveis através de controles de interface. Este ambiente foca na geração procedural de uma floresta.
+
 (T2) - Implementação de sombreamento em uma cena, onde é nos dado uma situação de Hard Shadow e devemos implementar a Soft Shadow no lugar.
 
 ##### Cred: 
