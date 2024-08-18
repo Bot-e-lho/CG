@@ -33,6 +33,7 @@ void main() {
 const fs = `#version 300 es
 precision highp float;
 
+
 // Passed in from the vertex shader.
 in vec2 v_texcoord;
 in vec4 v_projectedTexcoord;
@@ -46,25 +47,8 @@ uniform vec3 u_reverseLightDirection;
 
 out vec4 outColor;
 
-float texture2DCompare(sampler2D depths, vec2 uv, float compare) {
-  float depth = texture(depths, uv).r;
-  return step(compare, depth);
-}
-
-float texture2DShadowLerp(sampler2D depths, vec2 uv, float compare) {
-  vec2 texelSize = vec2(1.0) / vec2(textureSize(depths, 0));
-  vec2 f = fract(uv / texelSize);
-  vec2 centroidUV = (floor(uv / texelSize) + 0.5) * texelSize;
-  
-  float lb = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 0.0), compare);
-  float lt = texture2DCompare(depths, centroidUV + texelSize * vec2(0.0, 1.0), compare);
-  float rb = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 0.0), compare);
-  float rt = texture2DCompare(depths, centroidUV + texelSize * vec2(1.0, 1.0), compare);
-  
-  float a = mix(lb, lt, f.y);
-  float b = mix(rb, rt, f.y);
-  return mix(a, b, f.x);
-}
+const int kernelSize = 3; // Tamanho do kernel 3x3 - (0 - hard shadow, > 0 - aumento da suavização)
+const float texelSize = 1.0 / 512.0; // Tamanho do texel do shadowmap
 
 void main() {
   vec3 normal = normalize(v_normal);
@@ -79,28 +63,23 @@ void main() {
       projectedTexcoord.y >= 0.0 &&
       projectedTexcoord.y <= 1.0;
 
-  float shadowLight = 1.0; // Limita a area para o espaço do cubo
-
-  if (inRange) {
-    float shadow = 0.0;
-    float samples = 4.0;
-    vec2 texelSize = 1.0 / vec2(textureSize(u_projectedTexture, 0));
-    for (float x = -1.5; x <= 1.5; x += 1.0) {
-      for (float y = -1.5; y <= 1.5; y += 1.0) {
-        vec2 offset = vec2(x, y) * texelSize;
-        shadow += texture2DShadowLerp(u_projectedTexture, projectedTexcoord.xy + offset, currentDepth);
-      }
+  float shadowLight = 0.0; // Limita a area para o espaço do cubo
+  for (int x = -kernelSize; x <= kernelSize; ++x) {
+    for (int y = -kernelSize; y <= kernelSize; ++y) {
+      vec2 offset = vec2(float(x), float(y)) * texelSize;
+      float sampledDepth = texture(u_projectedTexture, projectedTexcoord.xy + offset).r;
+      shadowLight += (inRange && sampledDepth <= currentDepth) ? 0.0 : 1.0;
     }
-    shadowLight = shadow / (samples * samples);
   }
+  shadowLight /= float((kernelSize * 2 + 1) * (kernelSize * 2 + 1));
 
   vec4 texColor = texture(u_texture, v_texcoord) * u_colorMult;
   outColor = vec4(
       texColor.rgb * light * shadowLight,
       texColor.a);
 }
-`;
 
+`;
 
 const colorVS = `#version 300 es
 in vec4 a_position;
@@ -140,7 +119,7 @@ function main() {
   // note: Since we're going to use the same VAO with multiple
   // shader programs we need to make sure all programs use the
   // same attribute locations. There are 2 ways to do that.
-  // (1) assign them in GLSL. (2) assign them by calling gl.bindAttribLocation
+  // (1) assign them in GLSL. (2) assign them by calling `gl.bindAttribLocation`
   // before linking. We're using method 2 as it's more. D.R.Y.
   const programOptions = {
     attribLocations: {
