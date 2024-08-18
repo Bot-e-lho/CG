@@ -1,5 +1,6 @@
-# Procedural Generation Project
-### Este projeto é um sistema de geração procedural de cenários utilizando WebGL e JavaScript. Ele permite a criação dinâmica de diferentes ambientes, como florestas, cidades ou castelos, com configurações ajustáveis através de controles de interface. Este ambiente foca na geração procedural de uma floresta.
+# Computação Gráfica
+### Neste repositório estão presentes 2 trabalhos da disciplina de computação gráfica. (T1) - Este projeto é um sistema de geração procedural de cenários utilizando WebGL e JavaScript. Ele permite a criação dinâmica de diferentes ambientes, como florestas, cidades ou castelos, com configurações ajustáveis através de controles de interface. Este ambiente foca na geração procedural de uma floresta.
+(T2) - Implementação de sombreamento em uma cena, onde é nos dado uma situação de Hard Shadow e devemos implementar a Soft Shadow no lugar.
 
 ##### Cred: 
 ###### Miguel Rodrigues Botelho
@@ -7,7 +8,7 @@
 ###### Email: miguel.rbotelho@gmail.com
 ###### Link para Vídeo: https://drive.google.com/drive/folders/1Pd_n_9oHKjqqEJ0OD2OU5OYYoZ7w0Kt8?usp=sharing
 
-## Funcionalidades Implementadas
+## Funcionalidades Implementadas (T1)
 #### Objetos Implementados:
 ###### Grama
 ###### Quatro tipos diferentes de árvores
@@ -40,3 +41,6 @@
 #### Uso:
 ###### Ajuste os sliders para configurar a densidade de grama, número de objetos e tamanho da floresta.
 ###### Clique no botão "Gerar Novo Mundo" para visualizar um novo cenário com as configurações definidas.
+
+
+## Lógica Implementada (T2)
