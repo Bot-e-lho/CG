@@ -8,7 +8,7 @@
 ###### Miguel Rodrigues Botelho
 ###### Discord: botlane
 ###### Email: miguel.rbotelho@gmail.com
-###### Link para Vídeo: https://drive.google.com/drive/folders/1Pd_n_9oHKjqqEJ0OD2OU5OYYoZ7w0Kt8?usp=sharing
+###### Link para Vídeo: https://drive.google.com/drive/folders/1-HkbHitqq4V1jaRpWGIAC-iCr31gzVQO?usp=drive_link
 
 ## Funcionalidades Implementadas (T1)
 #### Objetos Implementados:
@@ -46,3 +46,9 @@
 
 
 ## Lógica Implementada (T2)
+
+#### A partir de um código de hard shadow de uma cena, foi implementado a versão com umbra e penumbra da mesma cena, no caso há uma transição de hard shadow para soft shadow, para isso foi implementado a lógica de shadow mapping com a técnica de PCF. 
+
+### Dificuldades Encontradas:
+
+#### No geral, no código para o site foi relativamente tranquilo, mantive-o como base na tentativa de aplicar a lógica no trabalho da geração procedural, porém me atrapalhei e não consegui implementar. A princípio foi desenvolvido somente para a aplicação no site.
