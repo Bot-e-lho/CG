@@ -1,4 +1,6 @@
 'use strict';
+// Código atualmente para rodar no vscode, foi retirado todos sliders
+// para melhor desempenho no navegador
 
 const vs = `#version 300 es
 in vec4 a_position;
