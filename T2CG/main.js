@@ -1,6 +1,7 @@
 'use strict';
 // Código atualmente para rodar no vscode, foi retirado todos sliders
 // para melhor desempenho no navegador
+// Para modificar os detalhes do sombreamento só modificar o espaço tratado no vídeo
 
 const vs = `#version 300 es
 in vec4 a_position;
